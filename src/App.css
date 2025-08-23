@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Magison";
+  font-style: normal;
+  src: local("Magison"), url("assets/fonts/Magison.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gilroy Regular";
+  font-style: normal;
+  src: local("Gilroy Regular"), url("assets/fonts/Gilroy-Regular.ttf") format("truetype");
+}
+
+
+.app {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  background-color: black;
+  height: 200vh;
+}
+
+.bg-shape-left {
+  position: absolute;
+  z-index: 1;
+  top: 30;
+  left: 0;
+}
+
+.bg-shape-right {
+  position: absolute;
+  z-index: 1;
+  top: 30;
+  right: 0;
+}

@@ -1,0 +1,50 @@
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-family: sans-serif;
+  color: #fff;
+  background: #111;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 0;
+  font-family: "Gilroy Regular", sans-serif;
+}
+
+/* moving glow */
+.button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px; /* border thickness */
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0deg,
+    transparent 80deg,
+    #ff2cdf 100deg,
+    transparent 120deg,
+    transparent 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: sweep 3s linear infinite;
+  z-index: -1;
+}
+
+@keyframes sweep {
+  to {
+    --angle: 360deg;
+  }
+}
