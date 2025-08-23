@@ -49,7 +49,7 @@ export default function HeroSection() {
   const imageSize = "200px";
 
   //Needed to toggle animation on mouse enter and leave
-  const [enableAnimation, setEnableAnimation] = useState(false);
+  const [enableAnimation, setEnableAnimation] = useState(true);
 
   useEffect(() => {
     if (!enableAnimation) return;
@@ -124,7 +124,7 @@ export default function HeroSection() {
         className={styles.trailContainer}
         ref={trailContainerRef}
         onMouseLeave={() => setEnableAnimation(false)}
-        // onMouseEnter={() => setEnableAnimation(true)}
+        onMouseEnter={() => setEnableAnimation(true)}
       >
         <Navbar />
         <Title />
