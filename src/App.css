@@ -13,12 +13,7 @@
 
 .app {
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  align-items: center;
   background-color: black;
-  height: 200vh;
 }
 
 .bg-shape-left {
