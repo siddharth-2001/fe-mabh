@@ -1,3 +1,4 @@
+import BlobContainer from "../../BlobContainer/BlobContainer";
 import Button from "../../Button/Button";
 import PageSection from "../../PageSection/PageSection";
 import Tip from "../../Tip/Tip";
@@ -7,9 +8,7 @@ export default function Page1() {
   return (
     <PageSection>
       <div className={styles.parentContainer}>
-        <div className={styles.animationContainer}>
-          <div className={`${styles.blob} ${styles.blob1}`}></div>
-          <div className={`${styles.blob} ${styles.blob2}`}></div>
+        <BlobContainer>
           <div className={styles.mainContainer}>
             <Tip text="Get ready to level up your digital presence" />
             <div className={styles.typography}>
@@ -22,7 +21,7 @@ export default function Page1() {
             </div>
             <Button text="Let's Talk" />
           </div>
-        </div>
+        </BlobContainer>
       </div>
     </PageSection>
   );

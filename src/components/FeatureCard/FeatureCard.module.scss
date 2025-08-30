@@ -1,0 +1,52 @@
+.featureCardContainer {
+  position: relative;
+  margin: 2rem 0;
+  width: 100%;
+  font-family: "Gilroy Regular", sans-serif;
+
+  background-color: rgba(18, 18, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  position: relative;
+  backdrop-filter: blur(10px);
+
+  h3 {
+    font-size: 1.5rem;
+    text-wrap: nowrap;
+    color: white;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+    text-align: center;
+  }
+}
+
+.iconCircle {
+  position: absolute;
+  top: -20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  z-index: 2;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+.icon {
+  display: flex;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+}
