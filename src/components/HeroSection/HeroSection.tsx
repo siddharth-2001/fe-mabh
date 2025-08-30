@@ -21,7 +21,6 @@ import mouseImg13 from "../../assets/mouse13.png";
 import mouseImg14 from "../../assets/mouse14.png";
 import mouseImg15 from "../../assets/mouse15.png";
 import gsap from "gsap";
-import PageSection from "../PageSection/PageSection";
 
 export default function HeroSection() {
   const trailContainerRef = useRef<HTMLDivElement>(null);
@@ -119,17 +118,15 @@ export default function HeroSection() {
   }, [enableAnimation]);
 
   return (
-    <PageSection>
-      <div
-        className={styles.trailContainer}
-        ref={trailContainerRef}
-        onMouseLeave={() => setEnableAnimation(false)}
-        onMouseEnter={() => setEnableAnimation(true)}
-      >
-        <Navbar />
-        <Title />
-        <Subtitle />
-      </div>
-    </PageSection>
+    <div
+      className={styles.trailContainer}
+      ref={trailContainerRef}
+      onMouseLeave={() => setEnableAnimation(false)}
+      onMouseEnter={() => setEnableAnimation(true)}
+    >
+      <Navbar />
+      <Title />
+      <Subtitle />
+    </div>
   );
 }
