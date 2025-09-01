@@ -10,6 +10,8 @@ import layerIcon from "../../../assets/page2-layers.png";
 import priceIcon from "../../../assets/page2-price.png";
 import teamIcon from "../../../assets/page2-team.png";
 import bestIcon from "../../../assets/page2-best.png";
+import starsIcon from "../../../assets/stars-icon.png";
+import InfoBox from "../../InfoBox/InfoBox";
 
 export default function Page2() {
   return (
@@ -17,6 +19,16 @@ export default function Page2() {
       <div className={styles.content}>
         <img src={bgLeft} className={styles.bgLeft} />
         <img src={bgRight} className={styles.bgRight} />
+        <InfoBox text="Why Us" icon={starsIcon} />
+
+        <div className={styles.textContainer}>
+          <span className={styles.title}>
+            Experience the Benefits of Our Expertise
+          </span>
+          <span className={styles.subtext}>
+            That drives impactful gain powerful results
+          </span>
+        </div>
 
         <div className={styles.mainSection}>
           <div className={styles.circle}>
