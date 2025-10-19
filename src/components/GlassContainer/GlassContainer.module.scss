@@ -1,0 +1,14 @@
+.glassContainer {
+  /* Set a translucent background */
+  background-color: rgba(0, 0, 0, 0.3); /* White with 20% opacity */
+  border-radius: 1.5rem;
+
+  /* Apply the blur effect to the background behind the element */
+  backdrop-filter: blur(
+    1rem
+  ); /* Adjust the pixel value for desired blur intensity */
+  -webkit-backdrop-filter: blur(1rem); /* For Safari compatibility */
+  color: white; /* Example text color */
+  z-index: 3;
+  padding: 8px 16px;
+}

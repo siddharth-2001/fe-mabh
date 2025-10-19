@@ -8,17 +8,19 @@ import Page2 from "./components/home/Page2/Page2";
 import Page3 from "./components/home/Page3/Page3";
 import PageSection from "./components/PageSection/PageSection";
 
+// Orb, Aurora, 
+
 function App() {
   return (
     <>
       <div className="app">
         <PageSection>
-          <div className="bg-shape-left">
+          {/* <div className="bg-shape-left">
             <img src={bg_shape_left} alt="" />
           </div>
           <div className="bg-shape-right">
             <img src={bg_shape_right} alt="" />
-          </div>
+          </div> */}
           <HeroSection />
         </PageSection>
         <Page1 />

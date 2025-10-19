@@ -1,28 +1,42 @@
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 6rem;
+  width: 100%;
+  color: white;
+
+  width: 60rem;
+  height: 5rem;
+  border-radius: 2.5rem;
+  border: 1px solid rgba(153, 153, 153, 0.18);
+  font-family: "Gilroy Regular", sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  z-index: 100;
+
+  /* Set a translucent background */
+  background-color: rgba(0, 0, 0, 0.3); /* White with 20% opacity */
+
+  /* Apply the blur effect to the background behind the element */
+  backdrop-filter: blur(
+    10px
+  ); /* Adjust the pixel value for desired blur intensity */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+
+//   /* Optional: Add other styling for the container */
+//   border-radius: 15px;
+//   padding: 20px;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//   color: white; /* Example text color */
+
+  .accent {
+    color: #ff00cc;
+  }
+
+  .buttonRow {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 6rem;
-    width: 100%;
-    color: white;
-    background-color: black;
-    width: 60rem;
-    height: 5rem;
-    border-radius: 2.5rem;
-    border: 1px solid rgba(153,153,153,0.18 );
-    font-family: 'Gilroy Regular', sans-serif;
-    font-weight: 400;
-    font-size: 1.25rem;
-    z-index: 100;
-
-    .accent {
-        color: #ff00cc;
-    }
-
-
-    .buttonRow {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
+    gap: 1rem;
+  }
 }
