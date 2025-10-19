@@ -8,7 +8,7 @@ interface ICarousel3DProps {
 export default function Carousel3D({ images }: ICarousel3DProps) {
   const [angle, setAngle] = useState(0);
   const itemCount = images.length;
-  const radius = 1200; // push cards around you in a circle
+  const radius = 3000; // push cards around you in a circle
 
   const rotateNext = () => setAngle((prev) => prev - 360 / itemCount);
 
