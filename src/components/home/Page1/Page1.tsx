@@ -1,5 +1,6 @@
 import BlobContainer from "../../BlobContainer/BlobContainer";
 import Button from "../../Button/Button";
+import GlassContainer from "../../GlassContainer/GlassContainer";
 import PageSection from "../../PageSection/PageSection";
 import Tip from "../../Tip/Tip";
 import styles from "./Page1.module.scss";
@@ -9,18 +10,20 @@ export default function Page1() {
     <PageSection>
       <div className={styles.parentContainer}>
         <BlobContainer>
-          <div className={styles.mainContainer}>
-            <Tip text="Get ready to level up your digital presence" />
-            <div className={styles.typography}>
-              We Create Content that{" "}
-              <span className={styles.accent}>Connects</span> &{" "}
-              <span className={styles.accent}>Converts</span>
+          <GlassContainer>
+            <div className={styles.mainContainer}>
+              <Tip text="Get ready to level up your digital presence" />
+              <div className={styles.typography}>
+                We Create Content that{" "}
+                <span className={styles.accent}>Connects</span> &{" "}
+                <span className={styles.accent}>Converts</span>
+              </div>
+              <div className={styles.subtitle}>
+                Top-Tier Digital Experiences for High-Impact Brands
+              </div>
+              <Button text="Let's Talk" />
             </div>
-            <div className={styles.subtitle}>
-              Top-Tier Digital Experiences for High-Impact Brands
-            </div>
-            <Button text="Let's Talk" />
-          </div>
+          </GlassContainer>
         </BlobContainer>
       </div>
     </PageSection>

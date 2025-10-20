@@ -9,6 +9,7 @@ import mouseImg4 from "../../../assets/mouse4.jpg";
 import mouseImg5 from "../../../assets/mouse5.jpg";
 import graphicsIcon from "../../../assets/graphics-icon.png";
 import InfoBox from "../../InfoBox/InfoBox";
+import CircularGallery from "../../CircularGallery/CircularGallery";
 
 export default function Page3() {
   const images = [
@@ -24,6 +25,8 @@ export default function Page3() {
     mouseImg5,
   ];
 
+  const carouselImages = images.map((src) => ({ image: src, text: "" }));
+
   return (
     <PageSection>
       <div className={styles.mainContainer}>
@@ -36,7 +39,13 @@ export default function Page3() {
           </span>
         </div>
 
-        <Carousel3D images={images} />
+        <CircularGallery
+          items={carouselImages}
+          bend={3}
+          textColor="#ffffff"
+          borderRadius={0.05}
+          scrollEase={0.02}
+        />
       </div>
     </PageSection>
   );

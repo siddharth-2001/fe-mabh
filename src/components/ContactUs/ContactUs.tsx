@@ -5,6 +5,9 @@ import voltageImg from "../../assets/high-voltage.png";
 import bulletImg from "../../assets/bullet.svg";
 import BlobContainer from "../BlobContainer/BlobContainer";
 import jumpArrowPng from "../../assets/jump-arrow.png";
+import GlassContainer from "../GlassContainer/GlassContainer";
+import emailjs from "@emailjs/browser";
+import { useEffect, useState } from "react";
 
 function BenefitsList() {
   return (
@@ -25,23 +28,74 @@ function BenefitsList() {
 
 interface IInputProps {
   title: string;
+  inputName: string;
+  handleOnChange: (inputName: string, value: string) => void;
   isTextArea?: boolean;
 }
 
-function Input({ title, isTextArea }: IInputProps) {
+function Input({ title, inputName, handleOnChange, isTextArea }: IInputProps) {
   return (
     <div className={styles.inputContainer}>
       <span className={styles.inputLabel}>{title}</span>
       {isTextArea ? (
-        <textarea className={styles.inputField} rows={5} />
+        <textarea className={styles.inputField} rows={5} onChange={(e) => {handleOnChange(inputName, e.currentTarget.value)}}/>
       ) : (
-        <input className={styles.inputField} type="text" />
+        <input className={styles.inputField} type="text" onChange={(e) => {handleOnChange(inputName, e.currentTarget.value)}} />
       )}
     </div>
   );
 }
 
 export default function ContactUs() {
+  function initializeEmailJS() {
+    emailjs.init({
+      publicKey: "7HyrLNkQgFEmCzW4e",
+      // Do not allow headless browsers
+      blockHeadless: true,
+      limitRate: {
+        // Set the limit rate for the application
+        id: "app",
+        // Allow 1 request per 10s
+        throttle: 10000,
+      },
+    });
+  }
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  function handleFormChange(inputName: string, value: string) {
+    setFormData((prevData) => ({
+      ...prevData,
+      [inputName]: value,
+    }));
+  }
+
+  function sendEmail() {
+    emailjs.send("service_dewwux7", "template_aedwimo", {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    });
+
+    emailjs.send("service_dewwux7", "template_y1ifema", {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    })
+  }
+
+  useEffect(() => {
+    // Initialize EmailJS SDK
+    initializeEmailJS();
+  }, []);
+
   return (
     <PageSection>
       <div className={styles.mainContainer}>
@@ -57,13 +111,17 @@ export default function ContactUs() {
         </div>
         <div className={styles.formContainer}>
           <BlobContainer>
-            <div className={styles.form}>
-              <Input title="Name" />
-              <Input title="Email" />
-              <Input title="Contact Number" />
-              <Input title="Message" isTextArea={true} />
-              <div className={styles.submitButton}>Send Message <img src={jumpArrowPng} alt="" /></div>
-            </div>
+            <GlassContainer>
+              <div className={styles.form}>
+                <Input title="Name" inputName="name" handleOnChange={handleFormChange} />
+                <Input title="Email" inputName="email" handleOnChange={handleFormChange}/>
+                <Input title="Contact Number" inputName="phone" handleOnChange={handleFormChange}/>
+                <Input title="Message" isTextArea={true} inputName="message" handleOnChange={handleFormChange}/>
+                <div className={styles.submitButton} onClick={sendEmail}>
+                  Send Message <img src={jumpArrowPng} alt="" />
+                </div>
+              </div>
+            </GlassContainer>
           </BlobContainer>
         </div>
       </div>

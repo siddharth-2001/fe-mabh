@@ -1,7 +1,8 @@
 .glassContainer {
   /* Set a translucent background */
   background-color: rgba(0, 0, 0, 0.3); /* White with 20% opacity */
-  border-radius: 1.5rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 
   /* Apply the blur effect to the background behind the element */
   backdrop-filter: blur(
