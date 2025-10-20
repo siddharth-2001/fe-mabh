@@ -1,4 +1,3 @@
-import Carousel3D from "../../Carousel3D/Carousel3D";
 import PageSection from "../../PageSection/PageSection";
 import styles from "./Page3.module.scss";
 
