@@ -3,6 +3,7 @@ import "./App.css";
 // import bg_shape_right from "./assets/bg_shape_right.png";
 import ContactUs from "./components/ContactUs/ContactUs";
 import HeroSection from "./components/HeroSection/HeroSection";
+import BestWork from "./components/home/BestWork/BestWork";
 import Page1 from "./components/home/Page1/Page1";
 import Page2 from "./components/home/Page2/Page2";
 import Page3 from "./components/home/Page3/Page3";
@@ -26,6 +27,7 @@ function App() {
         <Page1 />
         <Page2 />
         <Page3 />
+        <BestWork/>
         <ContactUs />
       </div>
     </>
