@@ -7,7 +7,7 @@ import BlobContainer from "../BlobContainer/BlobContainer";
 import jumpArrowPng from "../../assets/jump-arrow.png";
 import GlassContainer from "../GlassContainer/GlassContainer";
 import emailjs from "@emailjs/browser";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function BenefitsList() {
   return (
@@ -38,9 +38,21 @@ function Input({ title, inputName, handleOnChange, isTextArea }: IInputProps) {
     <div className={styles.inputContainer}>
       <span className={styles.inputLabel}>{title}</span>
       {isTextArea ? (
-        <textarea className={styles.inputField} rows={5} onChange={(e) => {handleOnChange(inputName, e.currentTarget.value)}}/>
+        <textarea
+          className={styles.inputField}
+          rows={5}
+          onChange={(e) => {
+            handleOnChange(inputName, e.currentTarget.value);
+          }}
+        />
       ) : (
-        <input className={styles.inputField} type="text" onChange={(e) => {handleOnChange(inputName, e.currentTarget.value)}} />
+        <input
+          className={styles.inputField}
+          type="text"
+          onChange={(e) => {
+            handleOnChange(inputName, e.currentTarget.value);
+          }}
+        />
       )}
     </div>
   );
@@ -49,7 +61,7 @@ function Input({ title, inputName, handleOnChange, isTextArea }: IInputProps) {
 export default function ContactUs() {
   function initializeEmailJS() {
     emailjs.init({
-      publicKey: "7HyrLNkQgFEmCzW4e",
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       // Do not allow headless browsers
       blockHeadless: true,
       limitRate: {
@@ -75,21 +87,32 @@ export default function ContactUs() {
     }));
   }
 
-  function sendEmail() {
-    emailjs.send("service_dewwux7", "template_aedwimo", {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    });
+  const sendEmail = useCallback(
+    (name: string, email: string, phone: string, message: string) => {
+      emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_AUTO_REPLY_TEMPLATE_ID,
+        {
+          name: name,
+          email: email,
+          phone: phone,
+          message: message,
+        }
+      );
 
-    emailjs.send("service_dewwux7", "template_y1ifema", {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-    })
-  }
+      emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_MESSAGE_TEMPLATE_ID,
+        {
+          name: name,
+          email: email,
+          phone: phone,
+          message: message,
+        }
+      );
+    },
+    []
+  );
 
   useEffect(() => {
     // Initialize EmailJS SDK
@@ -113,11 +136,38 @@ export default function ContactUs() {
           <BlobContainer>
             <GlassContainer>
               <div className={styles.form}>
-                <Input title="Name" inputName="name" handleOnChange={handleFormChange} />
-                <Input title="Email" inputName="email" handleOnChange={handleFormChange}/>
-                <Input title="Contact Number" inputName="phone" handleOnChange={handleFormChange}/>
-                <Input title="Message" isTextArea={true} inputName="message" handleOnChange={handleFormChange}/>
-                <div className={styles.submitButton} onClick={sendEmail}>
+                <Input
+                  title="Name"
+                  inputName="name"
+                  handleOnChange={handleFormChange}
+                />
+                <Input
+                  title="Email"
+                  inputName="email"
+                  handleOnChange={handleFormChange}
+                />
+                <Input
+                  title="Contact Number"
+                  inputName="phone"
+                  handleOnChange={handleFormChange}
+                />
+                <Input
+                  title="Message"
+                  isTextArea={true}
+                  inputName="message"
+                  handleOnChange={handleFormChange}
+                />
+                <div
+                  className={styles.submitButton}
+                  onClick={() => {
+                    sendEmail(
+                      formData.name,
+                      formData.email,
+                      formData.phone,
+                      formData.message
+                    );
+                  }}
+                >
                   Send Message <img src={jumpArrowPng} alt="" />
                 </div>
               </div>
