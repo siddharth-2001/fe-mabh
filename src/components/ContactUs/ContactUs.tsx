@@ -59,6 +59,14 @@ function Input({ title, inputName, handleOnChange, isTextArea }: IInputProps) {
 }
 
 export default function ContactUs() {
+  useEffect(() => {
+    // Initialize EmailJS SDK
+    initializeEmailJS();
+  }, []);
+
+  /**
+   * Initializes the EmailJS SDK with the public key and configuration options.
+   */
   function initializeEmailJS() {
     emailjs.init({
       publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
@@ -80,6 +88,14 @@ export default function ContactUs() {
     message: "",
   });
 
+  const [emailSent, setEmailSent] = useState(false);
+
+  /**
+   * Updates the form data state with new input values.
+   * @param inputName - The name/key of the form field to update
+   * @param value - The new value for the specified form field
+   * @returns void
+   */
   function handleFormChange(inputName: string, value: string) {
     setFormData((prevData) => ({
       ...prevData,
@@ -87,6 +103,14 @@ export default function ContactUs() {
     }));
   }
 
+  /**
+   * Sends an email using EmailJS with the provided form data. Memoized for performance optimization.
+   * @param name - The name of the sender
+   * @param email - The email address of the sender
+   * @param phone - The phone number of the sender
+   * @param message - The message content from the sender
+   * @returns void
+   */
   const sendEmail = useCallback(
     (name: string, email: string, phone: string, message: string) => {
       emailjs.send(
@@ -113,11 +137,6 @@ export default function ContactUs() {
     },
     []
   );
-
-  useEffect(() => {
-    // Initialize EmailJS SDK
-    initializeEmailJS();
-  }, []);
 
   return (
     <PageSection>
@@ -160,15 +179,18 @@ export default function ContactUs() {
                 <div
                   className={styles.submitButton}
                   onClick={() => {
+                    if (emailSent) return;
+
                     sendEmail(
                       formData.name,
                       formData.email,
                       formData.phone,
                       formData.message
                     );
+                    setEmailSent(true);
                   }}
                 >
-                  Send Message <img src={jumpArrowPng} alt="" />
+                  {emailSent ? "Your Query is Sent!" : "Send Message"} <img hidden={emailSent} src={jumpArrowPng} alt="" />
                 </div>
               </div>
             </GlassContainer>
