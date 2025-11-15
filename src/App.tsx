@@ -4,6 +4,7 @@ import "./App.css";
 import ContactUs from "./components/ContactUs/ContactUs";
 import HeroSection from "./components/HeroSection/HeroSection";
 import BestWork from "./components/home/BestWork/BestWork";
+import Footer from "./components/home/Footer/Footer";
 import Page1 from "./components/home/Page1/Page1";
 import Page2 from "./components/home/Page2/Page2";
 import Page3 from "./components/home/Page3/Page3";
@@ -29,6 +30,7 @@ function App() {
         <Page3 />
         <BestWork/>
         <ContactUs />
+        <Footer />
       </div>
     </>
   );

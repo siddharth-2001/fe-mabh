@@ -1,0 +1,56 @@
+@use "../../../_font.scss";
+@use "../../../_layout.scss";
+
+.mainContainer {
+  @include layout.flex-col-center;
+  justify-content: space-evenly;
+  height: 51.0625rem;
+  width: 67.125rem;
+  background-color: black;
+  border-radius: 1.5rem;
+  position: inherit;
+  z-index: 1;
+
+  .content {
+    @include layout.flex-col-center;
+    justify-content: space-evenly;
+    width: 420px;
+    height: 100%;
+    text-align: center;
+
+    .title {
+      @include font.title-style;
+      background: linear-gradient(179.77deg, #fffafa 0.2%, #818181 137.79%);
+      color: transparent;
+      background-clip: text;
+    }
+
+    .subtext {
+      @include font.subtext-style;
+      margin-top: 1rem;
+    }
+
+    .seperator {
+      @include layout.seperator;
+      background-color: rgba(112, 111, 111, 1);
+      margin: 2rem 0;
+      width: 400px;
+    }
+
+    .socials {
+      @include layout.flex-row-center;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+
+    .bookButton {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+      background: linear-gradient(90deg, #ff00cc 0%, #45e3ff 100%);
+      color: transparent;
+      background-clip: text;
+    }
+  }
+}

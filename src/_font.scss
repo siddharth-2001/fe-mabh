@@ -1,0 +1,11 @@
+@mixin title-style {
+  font-size: 3rem;
+  font-family: "Gilroy Regular", sans-serif;
+  color: white;
+}
+
+@mixin subtext-style {
+  font-size: 1.25rem;
+  color: rgba(112, 111, 111, 1);
+  font-family: "Gilroy Regular", sans-serif;
+}

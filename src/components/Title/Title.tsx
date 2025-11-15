@@ -1,9 +1,13 @@
 import styles from "./Title.module.scss";
 
-export default function Title() {
+interface TitleProps {
+  fontSize?: string;
+}
+
+export default function Title(props : TitleProps) {
   return (
-    <div>
-      <div className={styles.title}>
+    <div style={{zIndex: "2"}}>
+      <div className={styles.title} style={{ fontSize: props.fontSize || "5rem" }}>
         mabh
         <span className={styles.accent}>.fx</span>
       </div>
