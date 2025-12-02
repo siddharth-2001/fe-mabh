@@ -26,18 +26,6 @@ bun run build
 bun run preview
 ```
 
-If no scripts exist in package.json, add a minimal scripts block:
-```json
-{
-  "scripts": {
-    "dev": "your-dev-command",
-    "start": "your-start-command",
-    "build": "your-build-command",
-    "preview": "your-preview-command"
-  }
-}
-```
-
 Notes
 - bun run <script> works like npm run <script>.
 - For platform-specific guidance or advanced setup see https://bun.sh.
